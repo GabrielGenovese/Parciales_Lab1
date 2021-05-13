@@ -17,5 +17,9 @@ typedef struct
 int inicializacionContribuyente(eContribuyente alumno[], int cantidadElementos);
 int buscarLibreContribuyente(eContribuyente contribuyentes[], int cantidadElementos, int* indice);
 int ingresoDatosContribuyente(eContribuyente contribuyentes[],int posicion, int* idContribuyente);
+int tituloContribuyente();
+int imprimeUnContribuyente(eContribuyente contribuyente[], int posicion);
+int buscarIdContribuyente(eContribuyente contribuyentes[],int cantidadElementos, int* posicionID);
+
 
 #endif /* CONTRIBUYENTE_H_ */

@@ -49,9 +49,9 @@ int ingresoDatosContribuyente(eContribuyente contribuyentes[],int posicion, int*
 	{
 		contribuyentes[posicion].idContribuyente = *idContribuyente;
 
-		validacionStringAlpha21C(contribuyentes[posicion].nombre);
-		validacionStringAlpha21C(contribuyentes[posicion].apellido);
-		validacionNumeroEntero(&contribuyentes[posicion].cuil);
+		validacionStringAlpha21C(contribuyentes[posicion].nombre,"Ingrese el nombre del contribuyente: ");
+		validacionStringAlpha21C(contribuyentes[posicion].apellido,"Ingrese el apellido del contribuyente: ");
+		validacionNumeroEntero(&contribuyentes[posicion].cuil,"Ingrese el C.U.I.L. del contribuyente: ");
 
 		contribuyentes[posicion].isEmpty = 0;
 		*idContribuyente = *idContribuyente + 1 ;
@@ -95,3 +95,26 @@ int imprimeUnContribuyente(eContribuyente contribuyente[], int posicion)
 	return retorno;
 }
 
+int buscarIdContribuyente(eContribuyente contribuyentes[],int cantidadElementos, int* posicionID)
+{
+	int retorno = -1;
+	int idContribuyente;
+
+	if(contribuyentes != NULL && posicionID != NULL)
+	{
+		validacionNumeroEntero(&idContribuyente,"Ingrese el número de ID del contribuyente a modificar:  ");
+
+		for(int i = 0; i < cantidadElementos; i++)
+		{
+			if( !contribuyentes[i].isEmpty && contribuyentes[i].idContribuyente == idContribuyente)
+			{
+				*posicionID = i;
+				imprimeUnContribuyente(contribuyentes,i);
+				retorno = 0;
+				break;
+			}
+		}
+	}
+
+	return retorno;
+}

@@ -3,7 +3,7 @@
 
 typedef struct
 {
-	int idContribullente;
+	int idContribuyente;
 	int idRecaudacion;
 	int tipo;
 	int importe;

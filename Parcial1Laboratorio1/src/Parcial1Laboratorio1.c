@@ -18,8 +18,10 @@ int main(void) {
 	eContribuyente	contribuyentes[MAXIMO_CONTRIBUYENTES];
 	eRecaudacion recaudaciones[MAXIMO_RECAUDACIONES];
 	int opcionPrincipal;
+	int opcionSecundaria;
 	int indiceLibre;
 	int idContribuyente = 1000;
+	int posicionID;
 
 	inicializacionContribuyente(contribuyentes,MAXIMO_CONTRIBUYENTES);
 	inicializacionRecaudacion(recaudaciones,MAXIMO_RECAUDACIONES);
@@ -40,6 +42,31 @@ int main(void) {
 			}
 			break;
 		case 2:
+			if(!buscarIdContribuyente(contribuyentes,MAXIMO_CONTRIBUYENTES,posicionID))
+			{
+				do{
+					menuModificar(&opcionSecundaria,"opcion: ");
+					switch(opcionSecundaria)
+					{
+					case 1:
+						validacionStringAlpha21C(contribuyentes[posicionID].nombre,"Ingrese el nuevo nombre del contribuyente: ");
+						break;
+					case 2:
+						validacionStringAlpha21C(contribuyentes[posicionID].apellido,"Ingrese el nuevo apellido del contribuyente: ");
+						break;
+					case 3:
+						validacionNumeroEntero(&contribuyentes[posicionID].cuil,"Ingrese nuevo el C.U.I.L. del contribuyente: ");
+						break;
+					case 4:
+						break;
+					default:
+						printf("Opcion Invalida");
+						break;
+					}
+
+				}while(opcionSecundaria != 4);
+
+			}
 			break;
 		case 3:
 			break;
@@ -54,6 +81,9 @@ int main(void) {
 		case 8:
 			break;
 		case 9:
+			break;
+		default:
+			printf("Opcion Invalida");
 			break;
 		}
 	}while(opcionPrincipal != 9);

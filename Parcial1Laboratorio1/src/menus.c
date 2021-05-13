@@ -24,4 +24,22 @@ int menu(int* opcElegida, char mensaje[])
 	return retorno;
 }
 
+int menuModificar(int* opcElegida, char mensaje[])
+{
+	int retorno = -1;
+
+	if(opcElegida != NULL)
+	{
+		printf("\n1. Cambiar el nombre\n");
+		printf("2. Cambiar el Apellido\n");
+		printf("3. Cambiar el C.U.I.L.\n");
+		printf("4. Salir\n");
+		validacionNumeroEntero(opcElegida,mensaje);
+
+		retorno = 0;
+	}
+
+	return retorno;
+}
+
 
