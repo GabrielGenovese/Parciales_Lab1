@@ -118,3 +118,16 @@ int buscarIdContribuyente(eContribuyente contribuyentes[],int cantidadElementos,
 
 	return retorno;
 }
+
+int bajaLogicaContribuyente(eContribuyente contribuyentes[], int posicion)
+{
+	int retorno = -1;
+
+	if(contribuyentes != NULL)
+	{
+		contribuyentes[posicion].isEmpty = 1;
+		retorno = 0;
+	}
+
+	return retorno;
+}

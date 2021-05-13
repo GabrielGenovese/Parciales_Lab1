@@ -20,6 +20,7 @@ int ingresoDatosContribuyente(eContribuyente contribuyentes[],int posicion, int*
 int tituloContribuyente();
 int imprimeUnContribuyente(eContribuyente contribuyente[], int posicion);
 int buscarIdContribuyente(eContribuyente contribuyentes[],int cantidadElementos, int* posicionID);
+int bajaLogicaContribuyente(eContribuyente contribuyentes[], int posicion);
 
 
 #endif /* CONTRIBUYENTE_H_ */

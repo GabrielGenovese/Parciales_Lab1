@@ -22,6 +22,7 @@ int main(void) {
 	int indiceLibre;
 	int idContribuyente = 1000;
 	int posicionID;
+	char respuesta;
 
 	inicializacionContribuyente(contribuyentes,MAXIMO_CONTRIBUYENTES);
 	inicializacionRecaudacion(recaudaciones,MAXIMO_RECAUDACIONES);
@@ -68,7 +69,22 @@ int main(void) {
 
 			}
 			break;
+
 		case 3:
+			if(!buscarIdContribuyente(contribuyentes,MAXIMO_CONTRIBUYENTES,posicionID))
+			{
+				imprimeRecaudacionesPorIDContribuyente(recaudaciones,MAXIMO_RECAUDACIONES,contribuyentes[posicionID].idContribuyente);
+				validacionCaracterFijos(&respuesta,"¿Quiere confirmar la eliminacion? (s/n) ",'s','n');
+				if(respuesta == 's')
+				{
+					bajaLogicaContribuyente(contribuyentes,posicionID);
+					bajaLogicaRecaudacionesPorIDContribuyente(recaudaciones,MAXIMO_RECAUDACIONES,contribuyentes[posicionID].idContribuyente);
+				}
+			}
+			else
+			{
+				printf("ID Invalida");
+			}
 			break;
 		case 4:
 			break;
