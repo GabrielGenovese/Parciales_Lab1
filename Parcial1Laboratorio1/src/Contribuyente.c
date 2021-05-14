@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "validaciones_UTN.h"
+#include "Contribuyente.h"
 
 
 int inicializacionContribuyente(eContribuyente contribuyentes[], int cantidadElementos)
@@ -127,6 +128,25 @@ int bajaLogicaContribuyente(eContribuyente contribuyentes[], int posicion)
 	{
 		contribuyentes[posicion].isEmpty = 1;
 		retorno = 0;
+	}
+
+	return retorno;
+}
+
+int validacionIDContribuyente(eContribuyente contribuyentes[],int cantidadElementos,int idContribuyente)
+{
+	int retorno = -1;
+
+	if( contribuyentes != NULL && cantidadElementos > 0 && idContribuyente)
+	{
+		for(int i = 0; i < cantidadElementos; i++)
+		{
+			if(!contribuyentes[i].isEmpty && contribuyentes[i].idContribuyente == idContribuyente)
+			{
+				retorno = 0;
+				break;
+			}
+		}
 	}
 
 	return retorno;

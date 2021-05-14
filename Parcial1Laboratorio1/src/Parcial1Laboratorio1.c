@@ -8,6 +8,7 @@ Division: 1°E
 #include "Contribuyente.h"
 #include "Recaudacion.h"
 #include "menus.h"
+#include "validaciones_UTN.h"
 
 #define MAXIMO_RECAUDACIONES 50
 #define MAXIMO_CONTRIBUYENTES 50
@@ -21,8 +22,10 @@ int main(void) {
 	int opcionSecundaria;
 	int indiceLibre;
 	int idContribuyente = 1000;
+	int idRecaudacion = 100;
 	int posicionID;
 	char respuesta;
+	int idContParaRecaudacion;
 
 	inicializacionContribuyente(contribuyentes,MAXIMO_CONTRIBUYENTES);
 	inicializacionRecaudacion(recaudaciones,MAXIMO_RECAUDACIONES);
@@ -43,7 +46,7 @@ int main(void) {
 			}
 			break;
 		case 2:
-			if(!buscarIdContribuyente(contribuyentes,MAXIMO_CONTRIBUYENTES,posicionID))
+			if(!buscarIdContribuyente(contribuyentes,MAXIMO_CONTRIBUYENTES,&posicionID))
 			{
 				do{
 					menuModificar(&opcionSecundaria,"opcion: ");
@@ -71,7 +74,7 @@ int main(void) {
 			break;
 
 		case 3:
-			if(!buscarIdContribuyente(contribuyentes,MAXIMO_CONTRIBUYENTES,posicionID))
+			if(!buscarIdContribuyente(contribuyentes,MAXIMO_CONTRIBUYENTES,&posicionID))
 			{
 				imprimeRecaudacionesPorIDContribuyente(recaudaciones,MAXIMO_RECAUDACIONES,contribuyentes[posicionID].idContribuyente);
 				validacionCaracterFijos(&respuesta,"¿Quiere confirmar la eliminacion? (s/n) ",'s','n');
@@ -87,8 +90,18 @@ int main(void) {
 			}
 			break;
 		case 4:
+			if(!buscarLibreRecaudacion(recaudaciones,MAXIMO_RECAUDACIONES,&indiceLibre))
+			{
+				do
+				{
+					validacionNumeroEntero(&idContParaRecaudacion,"Ingrese el ID de contribuyente de esta Recaudacion: ");
+				}while(validacionIDContribuyente(contribuyentes,MAXIMO_CONTRIBUYENTES,idContParaRecaudacion));
+				ingresoDatosRecaudacion(recaudaciones,indiceLibre,&idRecaudacion,idContParaRecaudacion);
+			}
 			break;
+
 		case 5:
+
 			break;
 		case 6:
 			break;
